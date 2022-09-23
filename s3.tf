@@ -5,12 +5,12 @@ resource "aws_s3_bucket" "sss-bucket" {
     Environment = "Dev"
   }
 }
-resource "aws_s3_bucket_policy" "allow_access_from_public" {
+resource "aws_s3_bucket_policy" "public_access" {
   bucket = aws_s3_bucket.sss-bucket.id
-  policy = data.aws_iam_policy_document.allow_access_from_public.json
+  policy = data.aws_iam_policy_document.public_access.json
 }
 
-data "aws_iam_policy_document" "allow_access_from_public" {
+data "aws_iam_policy_document" "public_access" {
   statement {
     principals {
       type        = "AWS"
